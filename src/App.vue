@@ -8,15 +8,19 @@
         <CoffeeOptions></CoffeeOptions>
       </sui-card-content>
     </sui-card>
+
+    <TotalPrice></TotalPrice>
   </div>
 </template>
 
 <script>
 import CoffeeOptions from "./components/CoffeeOptions";
+import Order from "./components/Order";
+import TotalPrice from "./components/TotalPrice";
 
 export default {
   name: "App",
-  components: { CoffeeOptions },
+  components: { CoffeeOptions, Order, TotalPrice },
 
   methods: {
     test: function() {

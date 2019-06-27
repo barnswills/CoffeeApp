@@ -1,5 +1,6 @@
 <template>
-  <sui-segment>Price</sui-segment>
+<div class="price-container">
+  <sui-segment>Total: £{{$store.getters.totalPrice.toFixed(2)}}</sui-segment></div>
 </template>
 
 <script>
@@ -8,4 +9,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style>
+.price-container {
+  width: 65%;
+}
+</style>

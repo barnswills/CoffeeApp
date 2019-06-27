@@ -5,7 +5,13 @@
       <sui-segment selectable :key="d.id">
         <h5 is="sui-header">
           {{d.name}} £{{d.price.toFixed(2)}} {{getIsVegan(d.isVegan)}}
-          <sui-button color="green" circular floated="right" icon="add"/>
+          <sui-button
+            @click="addToOrder(d.price)"
+            color="green"
+            circular
+            floated="right"
+            icon="add"
+          />
         </h5>
       </sui-segment>
     </sui-segments>
@@ -30,7 +36,10 @@ export default {
         return "";
       }
     },
-    addToOrder(drink) {}
+    addToOrder(drinkPrice) {
+      console.log(drinkPrice);
+      this.$store.commit("increasePrice", drinkPrice);
+    }
   }
 };
 </script>

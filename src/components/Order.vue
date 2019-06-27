@@ -1,11 +1,17 @@
 <template>
-  <sui-segment>Order</sui-segment>
+  <div class="order-container">
+    <sui-segment>Order</sui-segment>
+  </div>
 </template>
 
 <script>
 export default {
   name: "Order"
-}
+};
 </script>
 
-<style></style>
+<style>
+.order-container {
+  width: 65%;
+}
+</style>

@@ -8,7 +8,9 @@ export const store = new Vuex.Store({
     count: 0,
     drinks: [
       { id: 1, name: "Latte", price: 1, isVegan: false },
-      { id: 2, name: "Black", price: 0.5, isVegan: true }
+      { id: 2, name: "Black", price: 0.75, isVegan: true },
+      { id: 3, name: "Milk", price: 0.25, isVegan: false },
+      { id: 4, name: "Spring Water", price: 0.65, isVegan: true }
     ],
     order: [],
     totalPrice: 0
@@ -17,10 +19,18 @@ export const store = new Vuex.Store({
     increment(state) {
       console.log("lets inc");
       state.count++;
+    },
+    addToOrder(state, drink) {
+      state.order.push(drink);
+    },
+    increasePrice(state, price) {
+      state.totalPrice += price;
     }
   },
   getters: {
     count: state => state.count,
-    drinks: state => state.drinks
+    drinks: state => state.drinks,
+    totalPrice: state => state.totalPrice,
+    order: state => state.order
   }
 });
