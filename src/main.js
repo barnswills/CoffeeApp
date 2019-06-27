@@ -1,15 +1,17 @@
 import Vue from "vue";
 import App from "./App.vue";
-
+import SuiVue from "semantic-ui-vue";
+import store from "./store/store";
 import Vuex from "vuex";
 
-import store from "./store/store";
+Vue.use(SuiVue);
+Vue.use(Vuex);
 
 Vue.config.productionTip = false;
 
-Vue.use(Vuex);
+//Vue.use(Vuex);
 
 new Vue({
-  render: h => h(App),
-  store
+  store,
+  render: h => h(App)
 }).$mount("#app");
