@@ -5,7 +5,13 @@ Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   state: {
-    count: 0
+    count: 0,
+    drinks: [
+      { id: 1, name: "Latte", price: 1, isVegan: false },
+      { id: 2, name: "Black", price: 0.5, isVegan: true }
+    ],
+    order: [],
+    totalPrice: 0
   },
   mutations: {
     increment(state) {
@@ -14,6 +20,7 @@ export const store = new Vuex.Store({
     }
   },
   getters: {
-    count: state => state.count
+    count: state => state.count,
+    drinks: state => state.drinks
   }
 });
