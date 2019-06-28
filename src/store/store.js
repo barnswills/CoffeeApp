@@ -10,21 +10,20 @@ export const store = new Vuex.Store({
       { name: "Latte", price: 1, isVegan: false },
       { name: "Americano", price: 0.75, isVegan: true },
       { name: "Milk", price: 0.25, isVegan: false },
-      { name: "Spring Water", price: 0.65, isVegan: true }
+      { name: "Spring Water", price: 0.65, isVegan: true },
+      { name: "Mocha", price: 0.85, isVegan: false },
+      { name: "Sparkling Water", price: 0.35, isVegan: true }
     ],
     order: [],
     orderNoDupes: [],
     totalPrice: 0
   },
   mutations: {
-    increment(state) {
-      console.log("lets inc");
-      state.count++;
-    },
     addToOrder(state, drink) {
       state.order.push(drink);
       state.orderNoDupes = [];
 
+      // create a new order array with amount of pruchases and rpice
       state.drinks.forEach(d => {
         let amount = 0;
         let price = 0;
@@ -36,6 +35,7 @@ export const store = new Vuex.Store({
           }
         });
 
+        // only add if the item has been ordered
         if (amount !== 0) {
           state.orderNoDupes.unshift({
             name: d.name,
@@ -48,6 +48,7 @@ export const store = new Vuex.Store({
     increasePrice(state, price) {
       state.totalPrice += price;
     },
+    // reset everything on the ui
     clearOrder(state) {
       state.totalPrice = 0;
       state.order = [];

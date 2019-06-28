@@ -10,7 +10,6 @@
     </sui-card>
 
     <Order></Order>
-
     <TotalPrice></TotalPrice>
 
     <div class="buttons-container">
@@ -30,10 +29,6 @@ export default {
   components: { CoffeeOptions, Order, TotalPrice },
 
   methods: {
-    test: function() {
-      console.log("Inked");
-      this.$store.commit("increment");
-    },
     clearOrder: function() {
       this.$store.commit("clearOrder");
     }
