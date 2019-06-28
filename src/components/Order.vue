@@ -5,7 +5,11 @@
         <h3 is="sui-header">Order</h3>
       </sui-card-header>
       <sui-card-content v-for="(item, index) in getOrder()" v-bind:key="index">
-        <sui-card-description>{{ item.name }} x{{ item.amount}}</sui-card-description>
+        <sui-card-description>
+          {{ item.name }}
+          x{{ item.amount}}
+          @ £{{item.price.toFixed(2)}}
+        </sui-card-description>
       </sui-card-content>
     </sui-card>
   </div>
@@ -17,9 +21,6 @@ export default {
 
   methods: {
     getOrder() {
-      const order = this.$store.getters.order;
-      const drinks = this.$store.getters.drinks;
-
       return this.$store.getters.orderNoDupes;
     }
   }

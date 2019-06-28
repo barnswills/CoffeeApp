@@ -27,15 +27,21 @@ export const store = new Vuex.Store({
 
       state.drinks.forEach(d => {
         let amount = 0;
+        let price = 0;
 
         state.order.forEach(o => {
           if (d.name === o.name) {
             amount++;
+            price = d.price * amount;
           }
         });
 
         if (amount !== 0) {
-          state.orderNoDupes.unshift({ name: d.name, amount: amount });
+          state.orderNoDupes.unshift({
+            name: d.name,
+            amount: amount,
+            price: price
+          });
         }
       });
     },
