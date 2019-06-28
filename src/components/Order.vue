@@ -1,12 +1,28 @@
 <template>
   <div class="order-container">
-    <sui-segment>Order</sui-segment>
+    <sui-card style="padding: 15px; margin-bottom: 10px">
+      <sui-card-header>
+        <h3 is="sui-header">Order</h3>
+      </sui-card-header>
+      <sui-card-content v-for="(item, index) in getOrder()" v-bind:key="index">
+        <sui-card-description>{{ item.name }} x{{ item.amount}}</sui-card-description>
+      </sui-card-content>
+    </sui-card>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Order"
+  name: "Order",
+
+  methods: {
+    getOrder() {
+      const order = this.$store.getters.order;
+      const drinks = this.$store.getters.drinks;
+
+      return this.$store.getters.orderNoDupes;
+    }
+  }
 };
 </script>
 

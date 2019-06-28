@@ -9,7 +9,14 @@
       </sui-card-content>
     </sui-card>
 
+    <Order></Order>
+
     <TotalPrice></TotalPrice>
+
+    <div class="buttons-container">
+      <sui-button positive>Proceed</sui-button>
+      <sui-button negative @click="clearOrder">Clear</sui-button>
+    </div>
   </div>
 </template>
 
@@ -26,6 +33,9 @@ export default {
     test: function() {
       console.log("Inked");
       this.$store.commit("increment");
+    },
+    clearOrder: function() {
+      this.$store.commit("clearOrder");
     }
   },
   mounted() {
@@ -37,5 +47,10 @@ export default {
 <style>
 .coffee-card-container {
   margin: 20px;
+}
+
+.buttons-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 </style>
