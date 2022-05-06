@@ -1,21 +1,24 @@
 <template>
-  <div>
-    <sui-card>
-      <sui-card-header style="padding: 15px;">
-        <h3 is="sui-header">Total: £{{$store.getters.totalPrice.toFixed(2)}}</h3>
-      </sui-card-header>
-    </sui-card>
-  </div>
+  <v-card class="price-container">
+    <v-card-title style="padding: 15px">
+      <h3>Total: £{{ this.$store.getters.totalPrice.toFixed(2) }}</h3>
+    </v-card-title>
+  </v-card>
 </template>
 
 <script>
 export default {
-  name: "TotalPrice"
+  name: "TotalPrice",
+  data() {
+    return {
+      total: 0,
+    };
+  },
 };
 </script>
 
 <style>
 .price-container {
-  width: 65%;
+  width: fit-content;
 }
 </style>

@@ -1,20 +1,21 @@
 <template>
   <div id="app" class="coffee-card-container">
-    <sui-card>
-      <sui-card-header style="padding: 20px; text-align: center;">
-        <h1 is="sui-header">Coffee App</h1>
-      </sui-card-header>
-      <sui-card-content>
+    <v-card>
+      <v-card-title style="padding: 20px; text-align: center">
+        <h1>Coffee App</h1>
+      </v-card-title>
+      <v-card-text>
         <CoffeeOptions></CoffeeOptions>
-      </sui-card-content>
-    </sui-card>
-
-    <Order></Order>
-    <TotalPrice></TotalPrice>
+      </v-card-text>
+    </v-card>
+    <div v-if="isEmpty()">
+      <Order></Order>
+      <TotalPrice></TotalPrice>
+    </div>
 
     <div class="buttons-container">
-      <sui-button positive>Proceed</sui-button>
-      <sui-button negative @click="clearOrder">Clear</sui-button>
+      <v-btn color="success">Proceed</v-btn>
+      <v-btn color="error" @click="clearOrder">Clear</v-btn>
     </div>
   </div>
 </template>
@@ -23,19 +24,20 @@
 import CoffeeOptions from "./components/CoffeeOptions";
 import Order from "./components/Order";
 import TotalPrice from "./components/TotalPrice";
-
 export default {
   name: "App",
   components: { CoffeeOptions, Order, TotalPrice },
-
   methods: {
-    clearOrder: function() {
+    clearOrder: function () {
       this.$store.commit("clearOrder");
-    }
+    },
+    isEmpty() {
+      return this.$store.getters.order.length > 0;
+    },
   },
   mounted() {
     console.log("App mounted!");
-  }
+  },
 };
 </script>
 
@@ -43,9 +45,11 @@ export default {
 .coffee-card-container {
   margin: 20px;
 }
-
 .buttons-container {
   margin-top: 10px;
   margin-bottom: 10px;
+}
+.v-btn {
+  margin-right: 10px;
 }
 </style>

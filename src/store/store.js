@@ -1,9 +1,6 @@
-import Vuex from "vuex";
-import Vue from "vue";
+import { createStore } from 'vuex'
 
-Vue.use(Vuex);
-
-export const store = new Vuex.Store({
+const store = createStore({
   state: {
     count: 0,
     drinks: [
@@ -63,3 +60,5 @@ export const store = new Vuex.Store({
     orderNoDupes: state => state.orderNoDupes
   }
 });
+
+export default store;

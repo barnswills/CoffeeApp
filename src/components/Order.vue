@@ -1,17 +1,14 @@
 <template>
   <div class="order-container">
-    <sui-card style="padding: 15px; margin-bottom: 10px">
-      <sui-card-header>
-        <h3 is="sui-header">Order</h3>
-      </sui-card-header>
-      <sui-card-content v-for="(item, index) in getOrder()" v-bind:key="index">
-        <sui-card-description>
+    <v-card style="padding: 15px; margin-bottom: 10px">
+      <v-card-title> Order </v-card-title>
+      <div v-for="(item, index) in getOrder()" v-bind:key="index">
+        <v-card-text>
           {{ item.name }}
-          x{{ item.amount}}
-          @ £{{item.price.toFixed(2)}}
-        </sui-card-description>
-      </sui-card-content>
-    </sui-card>
+          x{{ item.amount }} @ £{{ item.price.toFixed(2) }}
+        </v-card-text>
+      </div>
+    </v-card>
   </div>
 </template>
 
@@ -22,13 +19,14 @@ export default {
   methods: {
     getOrder() {
       return this.$store.getters.orderNoDupes;
-    }
-  }
+    },
+  },
 };
 </script>
 
 <style>
 .order-container {
-  width: 65%;
+  width: fit-content;
+  margin-top: 10px;
 }
 </style>

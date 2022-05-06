@@ -1,15 +1,12 @@
-import Vue from "vue";
-import App from "./App.vue";
-import SuiVue from "semantic-ui-vue";
-import { store } from "./store/store";
+import 'vuetify/styles'
+import { createApp } from 'vue'
+import App from './App.vue'
+import vuetify from './plugins/vuetify'
+import { loadFonts } from './plugins/webfontloader'
+import store from "./store/store"
 
-import "semantic-ui-css/semantic.min.css";
+loadFonts()
 
-Vue.use(SuiVue);
-
-Vue.config.productionTip = false;
-
-new Vue({
-  render: h => h(App),
-  store
-}).$mount("#app");
+createApp(App)
+  .use(vuetify).use(store)
+  .mount('#app')
